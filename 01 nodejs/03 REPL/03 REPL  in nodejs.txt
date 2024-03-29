@@ -1,0 +1,13 @@
+read - eval- print - loop
+
+read -> read users input , parse the input js data-structure and store in meomory
+
+eval -> takes and evalutes the data structure
+
+print -> print the result
+
+loop -> loop the above command until the user presses ctr-c twice 
+
+
+// activating REPL by typing node in terminal
+

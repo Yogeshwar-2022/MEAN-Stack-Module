@@ -1,0 +1,344 @@
+yogeshwar> use yogeshwar   // create database
+already on db yogeshwar
+
+// by insert automatically create collections
+
+yogeshwar> db.yog.insertOne({name:"reactjs", type:"frontend",videos:80,acitve:true })
+{
+  acknowledged: true,
+  insertedId: ObjectId('65e55782d52688650e05d6af')
+}
+yogeshwar> show dbs
+admin      40.00 KiB
+config     72.00 KiB
+local      40.00 KiB
+yogeshwar   8.00 KiB
+yogeshwar> db
+yogeshwar
+yogeshwar> show collections
+yog
+
+// read operation 
+yogeshwar> db.yog.find()
+[
+  {
+    _id: ObjectId('65e55782d52688650e05d6af'),
+    name: 'reactjs',
+    type: 'frontend',
+    videos: 80,
+    acitve: true
+  }
+]
+yogeshwar> db.yog.find().pretty()
+[
+  {
+    _id: ObjectId('65e55782d52688650e05d6af'),
+    name: 'reactjs',
+    type: 'frontend',
+    videos: 80,
+    acitve: true
+  }
+]
+yogeshwar> db.yog.insertone({name : mongoDB , type : backend , videos:20 , active :true})
+ReferenceError: mongoDB is not defined
+yogeshwar> db.yog.insertone({name : "mongoDB" , type : "backend" , videos:20 , active :true})
+TypeError: db.yog.insertone is not a function
+yogeshwar> db.yog.insertOne({name : "mongoDB" , type : "backend" , videos:20 , active :true})
+{
+  acknowledged: true,
+  insertedId: ObjectId('65e55928d52688650e05d6b0')
+}
+yogeshwar> show collections
+yog
+yogeshwar> db.yog.find()
+[
+  {
+    _id: ObjectId('65e55782d52688650e05d6af'),
+    name: 'reactjs',
+    type: 'frontend',
+    videos: 80,
+    acitve: true
+  },
+  {
+    _id: ObjectId('65e55928d52688650e05d6b0'),
+    name: 'mongoDB',
+    type: 'backend',
+    videos: 20,
+    active: true
+  }
+]
+yogeshwar> db.yog.insertMany({name : "nodeJS" , type : "backend" , videos:30 , active :true},{name :"expressJS " , type:"frontend" , videos : 40 , active :true})
+MongoInvalidArgumentError: Argument "docs" must be an array of documents
+yogeshwar> db.yog.insertMany([{name : "nodeJS" , type : "backend" , videos:30 , active :true},{name :"expressJS " , type:"frontend" , videos : 40 , active :true}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('65e559e6d52688650e05d6b1'),
+    '1': ObjectId('65e559e6d52688650e05d6b2')
+  }
+}
+yogeshwar> db.yog.find()
+[
+  {
+    _id: ObjectId('65e55782d52688650e05d6af'),
+    name: 'reactjs',
+    type: 'frontend',
+    videos: 80,
+    acitve: true
+  },
+  {
+    _id: ObjectId('65e55928d52688650e05d6b0'),
+    name: 'mongoDB',
+    type: 'backend',
+    videos: 20,
+    active: true
+  },
+  {
+    _id: ObjectId('65e559e6d52688650e05d6b1'),
+    name: 'nodeJS',
+    type: 'backend',
+    videos: 30,
+    active: true
+  },
+  {
+    _id: ObjectId('65e559e6d52688650e05d6b2'),
+    name: 'expressJS ',
+    type: 'frontend',
+    videos: 40,
+yogeshwar> db.yog.find({name :"mongoDB"})
+[
+  {
+    _id: ObjectId('65e55928d52688650e05d6b0'),
+    name: 'mongoDB',
+    type: 'backend',
+    videos: 20,
+    active: true
+  }
+]
+yogeshwar> db.yog.find({name :"mongoDB"},{name:1})
+[ { _id: ObjectId('65e55928d52688650e05d6b0'), name: 'mongoDB' } ]
+yogeshwar> db.yog.find({name :"mongoDB"},{name:0})
+[
+  {
+    _id: ObjectId('65e55928d52688650e05d6b0'),
+    type: 'backend',
+    videos: 20,
+    active: true
+  }
+]
+yogeshwar> db.yog.find({name :"mongoDB"},{id :0 ,name:1})
+MongoServerError[Location31253]: Cannot do inclusion on field name in exclusion projection
+yogeshwar> db.yog.find({name :"mongoDB"},{_id :0 ,name:1})
+[ { name: 'mongoDB' } ]
+yogeshwar>db.yog.find({active:true})
+  {
+    _id: ObjectId('65e55928d52688650e05d6b0'),
+    name: 'mongoDB',
+    type: 'backend',
+    videos: 20,
+    active: true
+  },
+  {
+    _id: ObjectId('65e559e6d52688650e05d6b1'),
+    name: 'nodeJS',
+    type: 'backend',
+    videos: 30,
+    active: true
+  },
+  {
+    _id: ObjectId('65e559e6d52688650e05d6b2'),
+    name: 'expressJS ',
+    type: 'frontend',
+    videos: 40,
+    active: true
+  }
+]
+-------------------------------------------------------------------
+// read operation 
+
+test> show dbs
+admin      40.00 KiB
+config     96.00 KiB
+local      40.00 KiB
+yogeshwar  72.00 KiB
+test> use yogeshwar
+switched to db yogeshwar
+yogeshwar> show collections
+yog
+yogeshwar> db.yog.find({active:true})
+[
+  {
+    _id: ObjectId('65e55928d52688650e05d6b0'),
+    name: 'mongoDB',
+    type: 'backend',
+    videos: 20,
+    active: true
+  },
+  {
+    _id: ObjectId('65e559e6d52688650e05d6b1'),
+    name: 'nodeJS',
+    type: 'backend',
+    videos: 30,
+    active: true
+  },
+  {
+    _id: ObjectId('65e559e6d52688650e05d6b2'),
+    name: 'expressJS ',
+    type: 'frontend',
+    videos: 40,
+    active: true
+  }
+]
+yogeshwar> db.yog.find({active:true}).limit(1)
+[
+  {
+    _id: ObjectId('65e55928d52688650e05d6b0'),
+    name: 'mongoDB',
+    type: 'backend',
+    videos: 20,
+    active: true
+  }
+]
+yogeshwar> db.yog.findOne({active:true})
+{
+  _id: ObjectId('65e55928d52688650e05d6b0'),
+  name: 'mongoDB',
+  type: 'backend',
+  videos: 20,
+  active: true
+}
+yogeshwar> db.yog.find({active:true}).limit(1).skip(1)
+[
+  {
+    _id: ObjectId('65e559e6d52688650e05d6b1'),
+    name: 'nodeJS',
+    type: 'backend',
+    videos: 30,
+    active: true
+  }
+]
+yogeshwar>
+----------------------------------------------------
+// update operation
+
+yogeshwar> db.yog.insertOne({name:"JavaScript" , type:"frontend-backend", videos:50, active : true })
+{
+  acknowledged: true,
+  insertedId: ObjectId('65e55f670d7f298bd67c284c')
+}
+yogeshwar> db.yog.find({name:"JavaScript"})
+[
+  
+  {
+    _id: ObjectId('65e55f670d7f298bd67c284c'),
+    name: 'JavaScript',
+    type: 'frontend-backend',
+    videos: 50,
+    active: true
+  }
+]
+
+yogeshwar> db.yog.updateOne({name:"JavaScript"},{$set:{type:"Full-Stack"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+yogeshwar> db.yog.find({name :"JavaScript"})
+[
+  {
+    _id: ObjectId('65e55f670d7f298bd67c284c'),
+    name: 'JavaScript',
+    type: 'Full-Stack',
+    videos: 50,
+    active: true
+  }
+]
+
+yogeshwar> db.yog.updateMany({type:"frontend"},{$set:{active:false}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+yogeshwar> db.yog.find({type:"frontend"})
+[
+  {
+    _id: ObjectId('65e55782d52688650e05d6af'),
+    name: 'reactjs',
+    type: 'frontend',
+    videos: 80,
+    acitve: true,
+    active: false
+  },
+  {
+    _id: ObjectId('65e559e6d52688650e05d6b2'),
+    name: 'expressJS ',
+    type: 'frontend',
+    videos: 40,
+    active: false
+  }
+]
+yogeshwar>
+
+-------------------------------------------------------
+
+// delete operation
+
+
+yogeshwar> db.yog.find({type:"full-stack"})
+
+yogeshwar> db.yog.find({type:"Full-Stack"})
+[
+  {
+    _id: ObjectId('65e55f670d7f298bd67c284c'),
+    name: 'JavaScript',
+    type: 'Full-Stack',
+    videos: 50,
+    active: true
+  }
+]
+yogeshwar> db.yog.deleteMany({type:"Full-Stack"})
+{ acknowledged: true, deletedCount: 1 }
+
+yogeshwar> db.yog.find({type:"Full-Stack"})
+
+yogeshwar> db.yog.find()
+[
+  {
+    _id: ObjectId('65e55782d52688650e05d6af'),
+    name: 'reactjs',
+    type: 'frontend',
+    videos: 80,
+    acitve: true,
+    active: false
+  },
+  {
+    _id: ObjectId('65e55928d52688650e05d6b0'),
+    name: 'mongoDB',
+    type: 'backend',
+    videos: 20,
+    active: true
+  },
+  {
+    _id: ObjectId('65e559e6d52688650e05d6b1'),
+    name: 'nodeJS',
+    type: 'backend',
+    videos: 30,
+    active: true
+  },
+  {
+    _id: ObjectId('65e559e6d52688650e05d6b2'),
+    name: 'expressJS ',
+    type: 'frontend',
+    videos: 40,
+    active: false
+  }
+]
+yogeshwar>
+

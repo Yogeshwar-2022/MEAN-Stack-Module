@@ -1,0 +1,4 @@
+it is nodejs. framework .
+express js is a web appliction framework that provides you with simple api to build websites, web apps and backend
+
+mainly express are use in routing and api 

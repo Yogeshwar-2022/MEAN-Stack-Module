@@ -1,0 +1,12 @@
+what is nodejs?
+
+nodejs is a js runtime built on chrome v8 js engine
+and nodejs is a js running on the server 
+
+---------------------------------
+
+when to use nodejs?
+
+i/o bound
+data streaming application eg when scroll in facebook insta there is not finish data ( reels suggestions ) 
+real time chat application 

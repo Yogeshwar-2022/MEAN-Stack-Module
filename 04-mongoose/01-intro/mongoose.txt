@@ -1,0 +1,2 @@
+mongoose is an object data modelling (odm) libarary for mongoDB and nodeJS. 
+it manages relationship between data, provides schema validation and is used to translate between object in code and the representing of those object in mongoDB

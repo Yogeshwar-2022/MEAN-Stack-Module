@@ -1,0 +1,36 @@
+mongoDb - NoSQL
+its a non relational , documented orientedd database management system and works on doucment based database
+
+mongoDb stored data in form of doucment
+mongoDb uses BSON for query database
+
+--------------------------
+
+
+while MySql - SQL
+is rdbms is a relational database management system and work on relational database.
+data store in table format
+it uses SQL to query database
+
+-------------------------
+
+json vs BSON documentation ----------->
+
+there are several issues that make JSON less than ideal for usage inside of a database.
+
+JSON only supports a limited number of basic data types. Most notably, JSON lacks support for dates and binary data.
+
+JSON objects and properties don’t have fixed length which makes traversal slower.
+
+In order to make MongoDB JSON-first, but still high performance and general purpose, BSON was invented to bridge the gap: a binary representation to store data in JSON format, optimized for speed, space, and efficiency. It’s not dissimilar from other binary interchange formats like Protocol Buffers, or Thrift, in terms of approach.
+
+---------------------------------------
+
+
+what is BSON 
+
+BSON stands for “Binary JSON,” and that’s exactly what it was invented to be. BSON’s binary structure encodes type and length information, which allows it to be traversed much more quickly compared to JSON.
+
+BSON adds some non-JSON-native data types, like dates and binary data, without which MongoDB would have been missing some valuable support.
+
+
